@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static '/css/mystyle.css' %}"  rel="stylesheet"/>
+</head>
+<body>
+    <h2>Student Operations</h2>
+    <img src="{% static '/images/1.png' %}" height="200" width="200"/>
+    <form method="post">
+          {% csrf_token %} 
+        <table>
+            <tr>
+                <td>Roll No :</td>
+                <td><input type="text" name="txtrno"></td>
+            </tr>
+            <tr>
+                <td>Student Name :</td>
+                <td><input type="text" name="txtname"></td>
+            </tr>
+            <tr>
+                <td>English :</td>
+                <td><input type="text" name="txtenglish"></td>
+            </tr>
+            <tr>
+                <td>Maths :</td>
+                <td><input type="text" name="txtmaths"></td>
+            </tr>
+            <tr>
+                <td>Science:</td>
+                <td><input type="text" name="txtscience"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit"  value="Submit">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    <h4>{{message}}</h4>
+    <hr/>
+
+    <div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Student Name</th>
+                <th>English</th>
+                <th>Maths</th>
+                <th>Science</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{s.rno}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.english}}</td>
+                <td>{{s.maths}}</td>
+                <td>{{s.science}}</td>
+            </tr>
+
+            {% endfor  %}
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
